@@ -232,7 +232,8 @@
     let depths = [];
 
     try {
-      best = Number(localStorage.getItem("neonArenaBest") || 0);
+      const storedBest = Number(localStorage.getItem("neonArenaBest") || 0);
+      best = Number.isFinite(storedBest) ? Math.max(0, storedBest) : 0;
     } catch (error) {
       console.warn("Le record ne peut pas être lu depuis le stockage local.", error);
     }
